@@ -354,8 +354,9 @@ public class VentanaHipoteca extends javax.swing.JInternalFrame {
     private void btnEmitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmitirActionPerformed
         if (!txtMonto.getText().isEmpty() && !txtCedula.getText().isEmpty() && !txtPlazo.getText().isEmpty()) {
 
+            Hipoteca h= new Hipoteca();
             try {
-                Hipoteca h= new Hipoteca();
+
                 h.setCedulaCliente(txtCedula.getText());
                 h.setCedulaGarante(txtCedulaGarante.getText());
                 h.setInteres(17.00);
