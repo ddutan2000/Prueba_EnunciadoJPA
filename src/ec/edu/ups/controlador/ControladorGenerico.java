@@ -19,12 +19,10 @@ import javax.swing.JOptionPane;
  */
 public abstract class ControladorGenerico<T> {
 
-    //private List<T> lista;
     private Class<T> clase;
     private EntityManager em;
 
     public ControladorGenerico() {
-        //lista = new ArrayList<>();
         Type t = getClass().getGenericSuperclass();
         ParameterizedType pt = (ParameterizedType) t;
         clase = (Class) pt.getActualTypeArguments()[0];
@@ -32,21 +30,20 @@ public abstract class ControladorGenerico<T> {
     }
 
     public ControladorGenerico(EntityManager em) {
-        //lista = new ArrayList<>();
         Type t = getClass().getGenericSuperclass();
         ParameterizedType pt = (ParameterizedType) t;
         clase = (Class) pt.getActualTypeArguments()[0];
         this.em = em;
     }
 
-    public void create(T objeto) throws Exception {
-        if (validarActualizacion(objeto) == true) {
+    public void create(T objeto) /*throws Exception*/ {
+        /*if (validarActualizacion(objeto) == true) {
             JOptionPane.showMessageDialog(null, "OBJETO YA EXISTE DENTRO DEL SISTEMA");
-        } else {
+        } else {*/
             em.getTransaction().begin();
             em.persist(objeto);
             em.getTransaction().commit();
-        }
+        //}
 
     }
 
@@ -87,14 +84,6 @@ public abstract class ControladorGenerico<T> {
     public abstract boolean validarActualizacion(T objeto) throws Exception;
 
     public abstract boolean validarExistente(Object id) throws Exception;
-
-    /*public List<T> getLista() {
-        return lista;
-    }
-
-    public void setLista(List<T> lista) {
-        this.lista = lista;
-    }*/
 
     public Class<T> getClase() {
         return clase;

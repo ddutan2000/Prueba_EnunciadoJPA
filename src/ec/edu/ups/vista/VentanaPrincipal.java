@@ -84,7 +84,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         exitMenuItem = new javax.swing.JMenuItem();
         menuBanco = new javax.swing.JMenu();
         itemHipoteca = new javax.swing.JMenuItem();
-        itemUsuarioM = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -161,15 +160,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         menuBanco.add(itemHipoteca);
 
-        itemUsuarioM.setMnemonic('y');
-        itemUsuarioM.setText("USUARIO");
-        itemUsuarioM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemUsuarioMActionPerformed(evt);
-            }
-        });
-        menuBanco.add(itemUsuarioM);
-
         menuBar.add(menuBanco);
 
         setJMenuBar(menuBar);
@@ -218,10 +208,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         inciarS.setVisible(true);
     }//GEN-LAST:event_itemIniciarSActionPerformed
-
-    private void itemUsuarioMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemUsuarioMActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itemUsuarioMActionPerformed
 
     private void itemHipotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHipotecaActionPerformed
         hipoteca.setVisible(true);
@@ -272,7 +258,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemRegistrarC;
     private javax.swing.JMenuItem itemRegistrarP;
     private javax.swing.JMenuItem itemRegistrarU;
-    private javax.swing.JMenuItem itemUsuarioM;
     private javax.swing.JMenu menuBanco;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables

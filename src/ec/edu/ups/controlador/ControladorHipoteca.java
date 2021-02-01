@@ -7,6 +7,7 @@ package ec.edu.ups.controlador;
 
 import ec.edu.ups.excepciones.*;
 import ec.edu.ups.modelo.Hipoteca;
+import java.util.List;
 import javax.persistence.Query;
 
 /**
@@ -15,30 +16,34 @@ import javax.persistence.Query;
  */
 public class ControladorHipoteca extends ControladorGenerico<Hipoteca> {
 
+    
+    
+
     //@Override
     public boolean validarActualizacion(Hipoteca objeto) throws ExcepcionActualizar {
-        String queryString = "Select * from hipoteca h "
-                + "where h.id like ?";
+        String queryString = "Select * from hipoteca as h "
+                + " where h.id like ?";
         Query query = getEm().createNativeQuery(queryString, Hipoteca.class);
-        Hipoteca hipoteca = (Hipoteca) query.setParameter(1, objeto.getId()).getSingleResult();
-        if (hipoteca != null) {
+        List<Hipoteca>hipoteca = query.setParameter(1, objeto.getId()).getResultList();
+        if (hipoteca.size()==1) {
             return true;
+        }else{
+            return false;
         }
-
-        throw new ExcepcionActualizar();
     }
 
     //@Override
     public boolean validarExistente(Object id) throws ExcepcionBuscar  {
 
-        String queryString = "Select * from hipoteca h "
+        String queryString = "Select * from hipoteca as h "
                 + "where h.id like ?";
         Query query = getEm().createNativeQuery(queryString, Hipoteca.class);
-        Hipoteca hipoteca = (Hipoteca) query.setParameter(1, id).getSingleResult();
-        if (hipoteca != null) {
+        List<Hipoteca> hipoteca = query.setParameter(1, id).getResultList();
+        if (hipoteca.size() == 1) {
             return true;
+        }else{
+            return false;
         }
 
-        throw new ExcepcionBuscar();
     }
 }
